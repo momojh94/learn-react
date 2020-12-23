@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { UserDispatch } from './App';
 
-const User = React.memo(function User({ user, onRemove, onToggle }) {
+const User = React.memo(function User({ user }) {
+  const dispatch = useContext(UserDispatch);
   /*
   useEffect(() => {
     console.log('컴포넌트가 화면에 나타남');
@@ -24,18 +26,26 @@ const User = React.memo(function User({ user, onRemove, onToggle }) {
           cursor: 'pointer',
           color: user.active ? 'green' : 'black'
         }}
-        onClick={() => onToggle(user.id)}
+        onClick={() => {
+          dispatch({ type : 'TOGGLE_USER', id: user.id });
+        }}
       >
         {user.username}
       </b>
       &nbsp;
       <span>({user.email})</span>
-      <button onClick={() => onRemove(user.id)}>삭제</button>
+      <button
+        onClick={() => {
+          dispatch({ type: 'REMOVE_USER', id: user.id });
+        }}
+      >
+        삭제
+      </button>
     </div>
   );
 });
 
-function UserList({ users, onRemove, onToggle }) {
+function UserList({ users }) {
 /*
 배열 렌더링 할 때 key가 없으면 비효율적이다.
 [a, b, c, d] 에서 b와 c 사이에 z가 들어가면 중간에 삽입되는 것이 아니라
@@ -49,12 +59,7 @@ function UserList({ users, onRemove, onToggle }) {
     <div>
       <br></br>
       {users.map(user => (
-        <User
-          user={user}
-          key={user.id}
-          onRemove={onRemove}
-          onToggle={onToggle}
-        />
+        <User user={user} key={user.id} />
       ))}
     </div>
   );
