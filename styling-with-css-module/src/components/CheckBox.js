@@ -10,7 +10,7 @@ function CheckBox({ children, checked, ...rest }) {
     <div className={cx('checkbox')}>
       <label>
         <input type="checkbox" checked={checked} {...rest} />
-        <div className={CSS('icon')}>
+        <div className={cx('icon')}>
           {checked ? (
             <MdCheckBox className={cx('checked')} />
           ) : (
