@@ -1,0 +1,66 @@
+/*
+css module은 sass에서도 사용 가능 그냥 확장자를 .module.scss 로 바꿔주면 된다.
+
+css module에서 클래스 이름을 고유화 하지 않고 전역적 클래스 이름을 사용하고 싶다면
+
+:global .my-global-name {
+
+}
+
+Sass에서는
+:global {
+  .my-global-name {
+
+  }
+}
+
+반대로 css module을 사용하지 않는 곳에서 특정 클래스에서만 고유 이름을 만들어서
+사용하고 싶으면
+
+:local .make-this-local {
+
+}
+
+sass에서는
+
+:local {
+  .make-this-local {
+    
+  }
+}
+*/
+
+.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox label {
+  cursor: pointer;
+}
+
+/* 실제 input을 숨기기 위한 코드 */
+.checkbox input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox span {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  /* 아이콘의 크기는 폰트 사이즈로 조정 가능 */
+  font-size: 2rem;
+  margin-right: 0.25rem;
+  color: #adb5bd;
+}
+
+.checked {
+  color: #339af0;
+}
