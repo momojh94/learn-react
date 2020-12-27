@@ -1,3 +1,4 @@
+/*
 import { useReducer, useEffect } from 'react';
 
 function reducer(state, action) {
@@ -53,3 +54,4 @@ function useAsync(callback, deps = [], skip = false) {
 }
 
 export default useAsync;
+*/
